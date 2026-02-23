@@ -1,6 +1,9 @@
 name: Daily Reddit Scraper
 
 on:
+  push:
+    branches:
+      - master
   schedule:
     # Runs at 00:00 UTC (Midnight) every day.
     # You can change this using cron syntax (e.g., '0 8 * * *' for 8:00 AM)
