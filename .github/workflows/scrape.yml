@@ -49,4 +49,4 @@ jobs:
           git diff --quiet && git diff --staged --quiet || git commit -m "Auto-update Reddit Data [$(date +'%Y-%m-%d')]"
           
           # Push the changes back to the main branch
-          git push
+          git push origin HEAD:master

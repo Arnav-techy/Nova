@@ -92,7 +92,8 @@ async function scrapeReddit() {
         fs.writeFileSync(fileName, csvContent, 'utf-8');
         console.log(`Successfully saved ${allPosts.length} Reddit posts to ${fileName}`);
     } else {
-        console.log('No Reddit posts found.');
+        console.error('No Reddit posts found. Action failing to prevent silent success.');
+        process.exit(1);
     }
 }
 
