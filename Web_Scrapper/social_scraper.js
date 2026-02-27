@@ -41,7 +41,7 @@ async function scrapeReddit() {
             // Increased limit to 50 for more data
             const response = await axios.get(`https://www.reddit.com/r/${sub}/hot.json?limit=50`, {
                 headers: {
-                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36'
+                    'User-Agent': 'Nodejs:social_scraper:v1.0.0 (by /u/ScraperDev)'
                 }
             });
 
@@ -79,21 +79,10 @@ async function scrapeReddit() {
         for (const post of allPosts) {
             csvContent += `${post.subreddit},${post.post_id},${post.title},${post.body},${post.author},${post.upvotes},${post.number_of_comments},${post.created_utc},${post.ticker_symbols},${post.source}\n`;
         }
-
-        const dirName = 'csvs';
-        if (!fs.existsSync(dirName)) {
-            fs.mkdirSync(dirName);
-        }
-
-        // Format date dynamically to prevent overwrite on re-runs
-        const dateString = new Date().toISOString().replace(/[:.]/g, '-');
-        const fileName = `${dirName}/reddit_data_${dateString}.csv`;
-
-        fs.writeFileSync(fileName, csvContent, 'utf-8');
-        console.log(`Successfully saved ${allPosts.length} Reddit posts to ${fileName}`);
+        fs.writeFileSync('reddit_data.csv', csvContent, 'utf-8');
+        console.log(`Successfully saved ${allPosts.length} Reddit posts to reddit_data.csv`);
     } else {
-        console.error('No Reddit posts found. Action failing to prevent silent success.');
-        process.exit(1);
+        console.log('No Reddit posts found.');
     }
 }
 

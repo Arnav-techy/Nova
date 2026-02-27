@@ -1,13 +1,13 @@
-name: Reddit Data Extraction Pipeline
+name: Daily Reddit Scraper
 
 on:
   push:
     branches:
       - master
   schedule:
-    # Runs at 14:30 UTC (which is 20:00 / 8:00 PM IST) every day.
+    # Runs at 00:00 UTC (Midnight) every day.
     # You can change this using cron syntax (e.g., '0 8 * * *' for 8:00 AM)
-    - cron: '30 14 * * *'
+    - cron: '0 0 * * *'
   
   # This allows you to trigger the workflow manually from the GitHub Actions tab
   workflow_dispatch:
@@ -41,12 +41,12 @@ jobs:
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           
-          # Add the new CSV files inside the csvs directory
-          git add csvs/
+          # Add the modified CSV file (or any new files)
+          git add reddit_data.csv
           
           # We only want to commit if there are actual changes
           # The logic below ensures the workflow doesn't fail if no new data was scraped
           git diff --quiet && git diff --staged --quiet || git commit -m "Auto-update Reddit Data [$(date +'%Y-%m-%d')]"
           
           # Push the changes back to the main branch
-          git push origin HEAD:master
+          git push
