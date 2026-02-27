@@ -41,7 +41,7 @@ async function scrapeReddit() {
             // Increased limit to 50 for more data
             const response = await axios.get(`https://www.reddit.com/r/${sub}/hot.json?limit=50`, {
                 headers: {
-                    'User-Agent': 'Nodejs:social_scraper:v1.0.0 (by /u/ScraperDev)'
+                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36'
                 }
             });
 
