@@ -79,8 +79,15 @@ async function scrapeReddit() {
         for (const post of allPosts) {
             csvContent += `${post.subreddit},${post.post_id},${post.title},${post.body},${post.author},${post.upvotes},${post.number_of_comments},${post.created_utc},${post.ticker_symbols},${post.source}\n`;
         }
-        fs.writeFileSync('reddit_data.csv', csvContent, 'utf-8');
-        console.log(`Successfully saved ${allPosts.length} Reddit posts to reddit_data.csv`);
+        const dateStr = new Date().toISOString().split('T')[0];
+        const fileName = `csvs/reddit_data_${dateStr}.csv`;
+
+        if (!fs.existsSync('csvs')) {
+            fs.mkdirSync('csvs');
+        }
+
+        fs.writeFileSync(fileName, csvContent, 'utf-8');
+        console.log(`Successfully saved ${allPosts.length} Reddit posts to ${fileName}`);
     } else {
         console.log('No Reddit posts found.');
     }
