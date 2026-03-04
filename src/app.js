@@ -16,12 +16,13 @@ app.use(express.urlencoded({ extended: true, limit: "16kb" }));
 app.use(express.static("public"));
 app.use(cookieParser());
 
-// routes import (to be added later)
 import userRouter from "./routes/user.route.js";
 import signalRouter from "./routes/signal.route.js";
+import insightRouter from "./routes/insight.route.js";
 
 // routes declaration
 app.use("/api/v1/users", userRouter)
 app.use("/api/v1/signals", signalRouter)
+app.use("/api/v1/insights", insightRouter)
 
 export { app };
