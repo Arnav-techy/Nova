@@ -1,6 +1,6 @@
 import { asyncHandler } from "../utils/asyncHandler.js";
-import { ApiError } from "../utils/ApiError.js";
-import { ApiResponse } from "../utils/ApiResponse.js";
+import { ApiError } from "../utils/apiError.js";
+import { ApiResponse } from "../utils/apiResponse.js";
 import { aggregateDailyData } from "../services/aggregation.service.js";
 import { Signal } from "../models/signal.model.js";
 
@@ -30,14 +30,21 @@ const getSignals = asyncHandler(async (req, res) => {
         date = new Date().toISOString().split("T")[0];
     }
 
-    const signals = await Signal.find({ date })
+    let signals = await Signal.find({ date })
         .sort({ engagement: -1 })
         .limit(parseInt(limit));
+
+    // Fallback: if no signals for the requested date, get the most recent ones
+    if (!signals.length) {
+        signals = await Signal.find({})
+            .sort({ date: -1, engagement: -1 })
+            .limit(parseInt(limit));
+    }
 
     if (!signals.length) {
         return res
             .status(200)
-            .json(new ApiResponse(200, [], `No signals found for date: ${date}`));
+            .json(new ApiResponse(200, [], "No signals found"));
     }
 
     return res

@@ -25,4 +25,15 @@ app.use("/api/v1/users", userRouter)
 app.use("/api/v1/signals", signalRouter)
 app.use("/api/v1/insights", insightRouter)
 
+// Global error handler — serializes ApiError to JSON
+app.use((err, req, res, next) => {
+    const statusCode = err.statusCode || 500;
+    res.status(statusCode).json({
+        statusCode,
+        message: err.message || "Something went wrong",
+        success: false,
+        errors: err.errors || [],
+    });
+});
+
 export { app };

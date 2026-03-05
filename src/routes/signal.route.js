@@ -4,13 +4,13 @@ import { verifyJWT } from "../middleware/auth.middleware.js";
 
 const router = Router();
 
-// Secure all signal routes
+// Public: Get the processed Signals (no auth needed for landing page)
+router.route("/").get(getSignals);
+
+// Secure routes below
 router.use(verifyJWT);
 
-// Trigger aggregation process
+// Trigger aggregation process (requires auth)
 router.route("/aggregate").post(triggerAggregation);
-
-// Get the processed Signals
-router.route("/").get(getSignals);
 
 export default router;
