@@ -1,0 +1,44 @@
+name: Weekly Model Retraining
+
+on:
+  schedule:
+    - cron: "0 2 * * 1"  # Every Monday at 2AM UTC
+  workflow_dispatch:       # Manual trigger from GitHub Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  retrain:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: Install dependencies
+        run: |
+          pip install transformers torch pandas \
+          scikit-learn accelerate sentencepiece -q
+
+      - name: Run retraining script
+        env:
+          GDRIVE_MODEL_PATH: ${{ secrets.GDRIVE_MODEL_PATH }}
+        run: |
+          cd Nova/training
+          python train.py
+
+      - name: Commit updated model configs
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add Nova/model/config.json
+          git add Nova/model/tokenizer_config.json
+          git add Nova/model/tokenizer.json
+          git diff --staged --quiet || git commit -m "Auto retrain: $(date +'%Y-%m-%d')"
+          git push
