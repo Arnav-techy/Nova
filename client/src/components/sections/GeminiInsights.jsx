@@ -5,7 +5,7 @@ import { insightService } from '../../services/insightService'
 import { Button } from '../ui/Button'
 import { SkeletonText } from '../ui/Skeleton'
 
-export function NovaInsights() {
+export function GeminiInsights() {
     const [ticker, setTicker] = useState('')
     const [insight, setInsight] = useState(null)
     const [loading, setLoading] = useState(false)
@@ -57,13 +57,13 @@ export function NovaInsights() {
                 >
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-panel border-brand-primary/20 text-xs font-mono text-gray-400 uppercase tracking-widest mb-6">
                         <BrainCircuit className="h-3 w-3" />
-                        Amazon Nova
+                        Google Gemini
                     </div>
                     <h2 className="text-3xl md:text-5xl font-mono font-bold mb-6">
                         Nova AI <span className="text-gradient-primary">Insights</span>
                     </h2>
                     <p className="text-gray-400 text-lg leading-relaxed">
-                        Get deep AI-generated analysis on any ticker. Powered by Amazon Nova reasoning engine.
+                        Get deep AI-generated analysis on any ticker. Powered by Google Gemini model.
                     </p>
                 </motion.div>
 
@@ -140,7 +140,7 @@ export function NovaInsights() {
                                 <h3 className="text-sm font-mono text-gray-400 uppercase tracking-widest">AI Analysis Output</h3>
                                 {insight && (
                                     <span className="text-[10px] font-mono text-brand-secondary px-2 py-1 rounded-full glass-panel">
-                                        Amazon Nova
+                                        Google Gemini
                                     </span>
                                 )}
                             </div>
@@ -152,7 +152,7 @@ export function NovaInsights() {
                                         <BrainCircuit className="h-10 w-10 text-brand-primary animate-pulse" />
                                         <div className="absolute inset-0 bg-brand-primary/20 rounded-full blur-xl" />
                                     </div>
-                                    <p className="text-sm text-gray-400">Nova is analyzing market data for <span className="text-brand-primary font-mono font-bold">{ticker}</span>…</p>
+                                    <p className="text-sm text-gray-400">Gemini is analyzing market data for <span className="text-brand-primary font-mono font-bold">{ticker}</span>…</p>
                                     <SkeletonText lines={4} className="w-full max-w-md mt-4" />
                                 </div>
                             )}

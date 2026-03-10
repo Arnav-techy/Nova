@@ -2,9 +2,8 @@ import { Hero } from '../components/sections/Hero'
 import { TickerStrip } from '../components/sections/TickerStrip'
 import { ProductOverview } from '../components/sections/ProductOverview'
 import { Showcase } from '../components/sections/Showcase'
-import { NovaInsights } from '../components/sections/NovaInsights'
+import { GeminiInsights } from '../components/sections/GeminiInsights'
 import { MLDashboard } from '../components/sections/MLDashboard'
-import { Stats } from '../components/sections/Stats'
 import { QuoteSection } from '../components/sections/QuoteAndGallery'
 import { CTASection, Footer } from '../components/sections/CtaAndFooter'
 import { Navbar } from '../components/ui/Navbar'
@@ -21,9 +20,8 @@ export default function LandingPage() {
                     <ProductOverview />
                 </div>
                 <Showcase />
-                <NovaInsights />
+                <GeminiInsights />
                 <MLDashboard />
-                <Stats />
                 <QuoteSection />
                 <CTASection />
             </main>

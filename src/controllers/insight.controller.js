@@ -1,7 +1,7 @@
 import { asyncHandler } from "../utils/asyncHandler.js";
 import { ApiError } from "../utils/apiError.js";
 import { ApiResponse } from "../utils/apiResponse.js";
-import { getNovaInsight } from "../services/nova.service.js";
+import { getGeminiInsight } from "../services/gemini.service.js";
 
 const getTickerInsight = asyncHandler(async (req, res) => {
     const { ticker } = req.params;
@@ -11,7 +11,7 @@ const getTickerInsight = asyncHandler(async (req, res) => {
     }
 
     try {
-        const insight = await getNovaInsight(ticker);
+        const insight = await getGeminiInsight(ticker);
 
         return res
             .status(200)

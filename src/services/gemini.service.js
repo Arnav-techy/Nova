@@ -1,15 +1,16 @@
 import { Signal } from "../models/signal.model.js";
-import { BedrockRuntimeClient, ConverseCommand } from "@aws-sdk/client-bedrock-runtime";
+import { GoogleGenerativeAI } from "@google/generative-ai";
 import { ApiError } from "../utils/apiError.js";
 
-const client = new BedrockRuntimeClient({ region: process.env.AWS_REGION || "us-east-1" });
+// Initialize Gemini API client
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || "YOUR_API_KEY");
 
 /**
- * Fetch ticker signals from MongoDB, format them, and get insights from Amazon Nova.
+ * Fetch ticker signals from MongoDB, format them, and get insights from Google Gemini.
  * @param {string} ticker - The stock ticker to analyze.
  * @returns {Promise<string>} The AI-generated insight.
  */
-export const getNovaInsight = async (ticker) => {
+export const getGeminiInsight = async (ticker) => {
     if (!ticker) {
         throw new ApiError(400, "Ticker is required");
     }
@@ -52,31 +53,18 @@ Provide:
 3. Potential risk signals
 4. Short-term outlook`;
 
-    // 3. Send the prompt to Amazon Nova via Bedrock
-    const modelId = process.env.NOVA_MODEL_ID || "amazon.nova-pro-v1:0";
-
-    const command = new ConverseCommand({
-        modelId,
-        messages: [
-            {
-                role: "user",
-                content: [
-                    {
-                        text: prompt
-                    }
-                ]
-            }
-        ]
-    });
-
+    // 3. Send the prompt to Google Gemini
     try {
-        const response = await client.send(command);
+        const model = genAI.getGenerativeModel({ model: process.env.GEMINI_MODEL_ID || "gemini-2.5-flash" });
+
+        const result = await model.generateContent(prompt);
+        const response = await result.response;
 
         // 4. Return an AI-generated insight
-        const insight = response.output.message.content[0].text;
+        const insight = response.text();
         return insight;
     } catch (error) {
-        console.error("Error communicating with Amazon Bedrock:", error);
-        throw new ApiError(500, "Failed to generate insight from Amazon Nova");
+        console.error("Error communicating with Google Gemini:", error);
+        throw new ApiError(500, "Failed to generate insight from Google Gemini");
     }
 };

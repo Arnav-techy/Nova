@@ -19,11 +19,15 @@ app.use(cookieParser());
 import userRouter from "./routes/user.route.js";
 import signalRouter from "./routes/signal.route.js";
 import insightRouter from "./routes/insight.route.js";
+import mlRouter from "./routes/ml.route.js";
+import predictionRouter from "./routes/prediction.route.js";
 
 // routes declaration
 app.use("/api/v1/users", userRouter)
 app.use("/api/v1/signals", signalRouter)
 app.use("/api/v1/insights", insightRouter)
+app.use("/api/v1/ml", mlRouter)
+app.use("/api/v1/prediction", predictionRouter)
 
 // Global error handler — serializes ApiError to JSON
 app.use((err, req, res, next) => {
