@@ -10,21 +10,7 @@ Nova is a modern, AI-powered fintech platform designed to resemble a professiona
 - **Live Data Visualizations**: Interactive charts for Price Predictions, Sentiment Trends, Mention Velocity, and Engagement Scores.
 - **Secure Authentication**: User login and registration system to save preferences and track personalized signals.
 
-## 📸 Screenshots
 
-*(Save the attached screenshots in the root of your project or an `assets/` folder and update these paths if necessary)*
-
-### Pipeline & ML Dashboard
-
-| The Intelligence Pipeline | ML Dashboard (ETF View) | ML Dashboard (AI View) |
-|:---:|:---:|:---:|
-| <img src="pipeline.png" width="300" alt="Pipeline"> | <img src="ml_dashboard_1.png" width="300" alt="ML Dashboard ETF"> | <img src="ml_dashboard_2.png" width="300" alt="ML Dashboard AI"> |
-
-### Nova AI Insights
-
-| Insights Search | Insight Output |
-|:---:|:---:|
-| <img src="nova_insights_search.png" width="450" alt="Insights Search"> | <img src="nova_insight_1.png" width="450" alt="Insight Output"> |
 
 ## 🛠️ Tech Stack
 
