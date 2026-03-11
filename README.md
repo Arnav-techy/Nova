@@ -34,7 +34,7 @@ Follow these instructions to get a copy of the project up and running on your lo
 ### Prerequisites
 - [Node.js](https://nodejs.org/) (v18 or higher recommended)
 - [MongoDB](https://www.mongodb.com/try/download/community) instance (Local or Atlas)
-- [Google Gemini API Key](https://aistudio.google.com/app/apikey)
+- Amazon Nova
 
 ### 1. Installation
 
@@ -62,7 +62,10 @@ PORT=8000
 MONGODB_URI=your_mongodb_connection_string_here
 CORS_ORIGIN=http://localhost:5173
 JWT_SECRET=your_super_secret_jwt_key
-GEMINI_API_KEY=your_google_gemini_api_key
+AWS_REGION=us-east-1
+AWS_ACCESS_KEY_ID=your_access_key
+AWS_SECRET_ACCESS_KEY=your_secret_key
+NOVA_MODEL_ID=amazon.nova-pro-v1:0   
 ```
 
 ### 3. Running the Application
