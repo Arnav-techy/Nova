@@ -24,7 +24,7 @@ export function Navbar() {
                     to="/"
                     className="text-xl font-mono font-bold tracking-tight flex items-center gap-1"
                 >
-                    <span className="text-white">nova</span>
+                    <span className="text-white">Nocturne</span>
                     <span className="text-brand-primary">.ai</span>
                 </Link>
 

@@ -57,13 +57,13 @@ export function GeminiInsights() {
                 >
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-panel border-brand-primary/20 text-xs font-mono text-gray-400 uppercase tracking-widest mb-6">
                         <BrainCircuit className="h-3 w-3" />
-                        Google Gemini
+                        Nova Engine v2.0 Live
                     </div>
                     <h2 className="text-3xl md:text-5xl font-mono font-bold mb-6">
                         Nova AI <span className="text-gradient-primary">Insights</span>
                     </h2>
                     <p className="text-gray-400 text-lg leading-relaxed">
-                        Get deep AI-generated analysis on any ticker. Powered by Google Gemini model.
+                        Get deep AI-generated analysis on any ticker. Powered by Nova Engine v2.0 Live model.
                     </p>
                 </motion.div>
 
@@ -140,7 +140,7 @@ export function GeminiInsights() {
                                 <h3 className="text-sm font-mono text-gray-400 uppercase tracking-widest">AI Analysis Output</h3>
                                 {insight && (
                                     <span className="text-[10px] font-mono text-brand-secondary px-2 py-1 rounded-full glass-panel">
-                                        Google Gemini
+                                        Nova Engine v2.0 Live
                                     </span>
                                 )}
                             </div>
