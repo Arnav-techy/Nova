@@ -1,11 +1,11 @@
-# Nova - Quant Research Terminal & AI Fintech Platform
+# Nocturne .ai - Quant Research Terminal & AI Fintech Platform
 
-Nova is a modern, AI-powered fintech platform designed to resemble a professional quant research terminal. It provides automated social sentiment analysis, ML-driven price predictions, and actionable trading insights using Google's Gemini AI.
+Nocturne is a modern, AI-powered fintech platform designed to resemble a professional quant research terminal. It provides automated social sentiment analysis, ML-driven price predictions, and actionable trading insights using Google's Gemini AI.
 
 ## 🚀 Features
 
 - **Quant-Style ML Dashboard**: A professional, dynamic two-panel layout with stock selection and real-time analytics.
-- **Nova AI Insights**: Deep, AI-generated analysis on any stock ticker powered by the Google Gemini model.
+- **Nova AI Insights**: Deep, AI-generated analysis on any stock ticker powered amazon nova.
 - **Social Sentiment Scraper**: Automated data collection from Reddit (e.g., r/wallstreetbets, r/stocks, r/investing) to gauge retail market sentiment.
 - **Live Data Visualizations**: Interactive charts for Price Predictions, Sentiment Trends, Mention Velocity, and Engagement Scores.
 - **Secure Authentication**: User login and registration system to save preferences and track personalized signals.
